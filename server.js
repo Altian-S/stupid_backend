@@ -1,46 +1,77 @@
-// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const path = require('path');
-
 const app = express();
-// IMPORTANT: Render sets the PORT dynamically. Use process.env.PORT or fallback to 3000.
-const PORT = process.env.PORT || 3000; 
-const USERS_FILE = path.join(__dirname, 'users.json');
 
-// --- Middleware & Setup ---
-app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(bodyParser.json()); 
+// 1. **CRITICAL FIX:** Use the environment variable $PORT provided by Render,
+//    or default to 3000 for local development.
+const PORT = process.env.PORT || 3000;
 
-// Tell Express to look for static files (like your index.html) 
-// within the current directory.
-app.use(express.static(__dirname));
+// Middleware to parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Function to read/save users (as defined previously)
-const readUsers = () => { /* ... implementation ... */ };
-const saveUsers = (users) => { /* ... implementation ... */ };
-if (!fs.existsSync(USERS_FILE)) {
-    fs.writeFileSync(USERS_FILE, JSON.stringify([]));
-}
-
-
-// --- ROUTES ---
-
-// Route to handle signup POST requests
-app.post('/signup', (req, res) => {
-    // ... (Your signup logic remains here) ...
-    // The simplified signup logic (CREATE/SAVE) is what connects to your 'data store' (users.json)
-    // ...
-});
-
-// Route to serve the HTML file (This is now largely covered by express.static, 
-// but keeping the '/' route is common practice)
+// Handle GET requests (display the form)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    const checkResult = `<span style='color:red'> Try the magic word "fred"</span>`;
+    // Send the HTML page
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Browser Title</title>
+        </head>
+        <body>
+            <h3 align=center>Render-node-backend</h3>
+            <form action="/" method="post">
+                <label for="myText01">Enter Text:</label>
+                <input type="text" id="myText01" name="myText01">
+                <input type="submit" value="Submit">
+            </form>
+            ${checkResult}
+        </body>
+        </html>
+    `);
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Handle POST requests (process the form submission)
+app.post('/', (req, res) => {
+    const myInputText01 = req.body.myText01;
+    let myCheck = false;
+    let checkResult = '';
+
+    if (myInputText01 === 'fred') {
+        myCheck = true;
+    }
+
+    if (myCheck) {
+        checkResult = `<b style='color:green'> Cool! </b>`;
+    } else {
+        checkResult = `<span style='color:red'> Try the magic word "fred"</span>`;
+    }
+    
+    // Re-send the HTML page with the new result
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Browser Title</title>
+        </head>
+        <body>
+            <h3 align=center>T2A06-node-codesandbox</h3>
+            <form action="/" method="post">
+                <label for="myText01">Enter Text:</label>
+                <input type="text" id="myText01" name="myText01">
+                <input type="submit" value="Submit">
+            </form>
+            ${checkResult}
+        </body>
+        </html>
+    `);
+});
+
+// 2. **CRITICAL FIX:** Listen on the PORT variable.
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`App listening on port ${PORT}`);
+    // Note: Logging the URL is optional but good practice.
+    // On Render, the host will not be 'localhost' but '0.0.0.0'
+    // or simply the external URL provided by Render.
 });
