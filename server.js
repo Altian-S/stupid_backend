@@ -43,7 +43,7 @@ app.post('/', (req, res) => {
     }
 
     if (myCheck) {
-        checkResult = `<b style='color:green'> Cool! </b>`;
+        checkResult = `<b style='color:green'> Really Cool!!! </b>`;
     } else {
         checkResult = `<span style='color:red'> Try the magic word "fred"</span>`;
     }
@@ -56,7 +56,7 @@ app.post('/', (req, res) => {
             <title>Browser Title</title>
         </head>
         <body>
-            <h3 align=center>T2A06-node-codesandbox</h3>
+            <h3 align=center>t2a27-render-node</h3>
             <form action="/" method="post">
                 <label for="myText01">Enter Text:</label>
                 <input type="text" id="myText01" name="myText01">
