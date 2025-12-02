@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 // Handle POST requests (process the form submission)
 app.post('/', (req, res) => {
     const myInputText01 = req.body.myText01;
-    const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss']
+    const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss','dookie','cock','balls','cuck','loser','babyface','baby']
     let myCheck = false;
     let myCheck02 = false;
     let checkResult = '';
@@ -47,7 +47,7 @@ app.post('/', (req, res) => {
         myCheck02 = true;
     }
     if (myCheck) {
-        checkResult = `<b style='color:green'> Really Cool!!! Try Penis next</b>`;
+        checkResult = `<b style='color:green'> Really Cool!!! Make Sure You Dont Swear!!!</b><br><b style='color:white'>you should swear</b>`;
     } else if (myCheck02){
         checkResult = `<span style='color:red'> oh real mature</span>`;
     } else {
