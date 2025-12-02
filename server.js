@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
     let myCheck = false;
     let checkResult = '';
 
-    if (myInputText01.toLowerCase === 'fred') {
+    if (myInputText01.toLowerCase() === 'fred'){
         myCheck = true;
     }
 
