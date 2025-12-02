@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 // Handle POST requests (process the form submission)
 app.post('/', (req, res) => {
     const myInputText01 = req.body.myText01;
-    const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss','dookie','cock','balls','cuck','loser','babyface','baby']
+    const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss','dookie','cock','balls','cuck','loser','babyface','baby','bitch']
     let myCheck = false;
     let myCheck02 = false;
     let checkResult = '';
