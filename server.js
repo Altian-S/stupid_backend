@@ -36,17 +36,21 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const myInputText01 = req.body.myText01;
     let myCheck = false;
+    let myCheck02 = false;
     let checkResult = '';
 
     if (myInputText01.toLowerCase() === 'fred'){
         myCheck = true;
     }
-
-    if (myCheck) {
-        checkResult = `<b style='color:green'> Really Cool!!! </b>`;
-    } else {
-        checkResult = `<span style='color:red'> Try the magic word "fred"</span>`;
+    if (myInputText01.toLowerCase() === 'penis'){
+        myCheck02 = true;
     }
+    if (myCheck) {
+        checkResult = `<b style='color:green'> Really Cool!!! Try Penis next</b>`;
+    } else if (myCheck02){
+        checkResult = `<span style='color:red'> oh real mature</span>`;
+    } else {`<span style='color:red'> try the magic word "fred" instead</span>`}
+    
     
     // Re-send the HTML page with the new result
     res.send(`
