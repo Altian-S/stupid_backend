@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
 // Handle POST requests (process the form submission)
 app.post('/', (req, res) => {
     const myInputText01 = req.body.myText01;
+    const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss']
     let myCheck = false;
     let myCheck02 = false;
     let checkResult = '';
@@ -42,7 +43,7 @@ app.post('/', (req, res) => {
     if (myInputText01.toLowerCase() === 'fred'){
         myCheck = true;
     }
-    if (myInputText01.toLowerCase() === 'penis'){
+    if (myBadWords(myInputText01.toLowerCase())){
         myCheck02 = true;
     }
     if (myCheck) {
