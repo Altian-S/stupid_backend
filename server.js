@@ -43,7 +43,7 @@ app.post('/', (req, res) => {
     if (myInputText01.toLowerCase() === 'fred'){
         myCheck = true;
     }
-    if (myBadWords(myInputText01.toLowerCase())){
+    if (myBadWords.includes(myInputText01.toLowerCase())){
         myCheck02 = true;
     }
     if (myCheck) {
