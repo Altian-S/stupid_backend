@@ -36,8 +36,10 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const myInputText01 = req.body.myText01;
     const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss','dookie','cock','balls','cuck','loser','babyface','baby','bitch']
+    const myFail = ['ferd','derf','fder','fedr']
     let myCheck = false;
     let myCheck02 = false;
+    let myCheck03 = false;
     let checkResult = '';
 
     if (myInputText01.toLowerCase() === 'fred'){
@@ -46,14 +48,19 @@ app.post('/', (req, res) => {
     if (myBadWords.includes(myInputText01.toLowerCase())){
         myCheck02 = true;
     }
+    if (myFail.includes(myInputText01.toLowercase())){
+        myCheck03
+    }
     if (myCheck) {
         checkResult = `<b style='color:green'> Really Cool!!! Make Sure You Dont Swear!!!</b><br><b style='color:white'>you should swear</b>`;
     } else if (myCheck02){
         checkResult = `<span style='color:red'> oh real mature</span>`;
-    } else {
+    } else if (myCheck03){
+        checkResult = `<span style='color:red'> did you mispell fred?</span>`;
+    }
+    else {
         checkResult = `<span style='color:red'> Try the magic word "fred"</span>`;
     }
-    
     
     // Re-send the HTML page with the new result
     res.send(`
