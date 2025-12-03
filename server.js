@@ -58,7 +58,7 @@ app.post('/', (req, res) => {
     } else if (myCheck02){
         checkResult = `<span style='color:red'> oh real mature</span>`;
     } else if (myBaddestWord){
-        checkResult = `<span style='color:red> How Specific</span>`
+        checkResult = `<span style='color:red> How Specific</span>`;
     } else if (myCheck03){
         checkResult = `<span style='color:red'> did you mispell fred?</span>`;
     } else {
