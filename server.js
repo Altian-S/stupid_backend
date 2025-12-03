@@ -48,7 +48,7 @@ app.post('/', (req, res) => {
     if (myBadWords.includes(myInputText01.toLowerCase())){
         myCheck02 = true;
     }
-    if (myFail.includes(myInputText01.toLowercase())){
+    if (myFail.includes(myInputText01.toLowerCase())){
         myCheck03
     }
     if (myCheck) {
