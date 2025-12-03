@@ -49,7 +49,7 @@ app.post('/', (req, res) => {
         myCheck02 = true;
     }
     if (myFail.includes(myInputText01.toLowerCase())){
-        myCheck03
+        myCheck03 = true;
     }
     if (myCheck) {
         checkResult = `<b style='color:green'> Really Cool!!! Make Sure You Dont Swear!!!</b><br><b style='color:white'>you should swear</b>`;
