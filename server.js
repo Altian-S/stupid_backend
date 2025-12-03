@@ -57,8 +57,7 @@ app.post('/', (req, res) => {
         checkResult = `<span style='color:red'> oh real mature</span>`;
     } else if (myCheck03){
         checkResult = `<span style='color:red'> did you mispell fred?</span>`;
-    }
-    else {
+    } else {
         checkResult = `<span style='color:red'> Try the magic word "fred"</span>`;
     }
     
