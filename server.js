@@ -35,7 +35,17 @@ app.get('/', (req, res) => {
 // Handle POST requests (process the form submission)
 app.post('/', (req, res) => {
     const myInputText01 = req.body.myText01;
-    const myBadWords = ['fuck','shit','poo','poop','pee','cunt','ass','piss','dookie','cock','balls','cuck','loser','babyface','baby','bitch','motherfucker']
+    const myBadWords = [
+    'fuck', 'shit', 'cunt', 'piss', 'ass', 'bitch', 'damn', 'hell', 
+    'bastard', 'crap', 'dick', 'pussy', 'cock', 'wank', 'bollocks', 
+    'motherfucker', 'asshole', 'faggot', 'tits', 'prick',
+    'dookie', 'balls', 'cuck', 'slut', 'whore', 'jizz', 'cum', 'clit', 
+    'vagina', 'penis', 'semen', 'boner', 'tit', 'anal', 'blowjob', 
+    'nigger', 'chink', 'gook', 'kike', 'gypsy', 'spic', 'wetback', 
+    'retard', 'tranny', 
+    'loser', 'idiot', 'moron', 'stupid', 'douchebag', 'scum', 
+    'jerk', 'wimp', 'babyface', 'baby', 'poop', 'pee', 'poo'
+    ];
     const myFail = ['ferd','derf','fder','fedr']
     let myCheck = false;
     let myCheck02 = false;
